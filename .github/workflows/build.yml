@@ -21,3 +21,10 @@ jobs:
 
     - name: Build
       run: ./gradlew build --no-daemon
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v4 # Use a stable version like v4
+      with:
+        name: build-output
+        path: build/libs/*.jar # Adjust this path based on where your Gradle build outputs files
+        retention-days: 7 # Optional: How long to retain the artifacts (default is 90 days for private repos, 400 for public)
